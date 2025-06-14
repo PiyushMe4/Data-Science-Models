@@ -49,7 +49,6 @@ To classify transactions as **fraudulent (1)** or **genuine (0)** using a superv
    - Class distribution before/after SMOTE
    - Feature importances
    - Fraud probability distribution
-   - Suspicious transaction table
 
 ---
 
@@ -58,11 +57,7 @@ To classify transactions as **fraudulent (1)** or **genuine (0)** using a superv
 | File | Description |
 |------|-------------|
 | `fraud_detection_model.ipynb` | Main Jupyter notebook |
-| `training_dataset.csv` | SMOTE-resampled training set |
-| `test_dataset_with_predictions.csv` | Test set with actual/predicted classes and fraud probabilities |
-| `fraud_cases_only.csv` | Subset of transactions that are actual or predicted frauds |
 | `top_suspicious.csv` | Top 10 suspicious transactions based on fraud probability |
-| `requirements.txt` | Python dependencies |
 | `README.md` | Project documentation |
 
 ---
@@ -72,12 +67,12 @@ To classify transactions as **fraudulent (1)** or **genuine (0)** using a superv
 > Below visuals are generated automatically in the notebook:
 
 - Class Distribution Before and After SMOTE  
-  ![Class Distribution](images/class_distribution.png)
+  ![Class Distribution]
 
 - Top 10 Important Features  
-  ![Feature Importance](images/feature_importance.png)
+  ![Feature Importance]
 
 - Fraud Probability Histogram  
-  ![Fraud Probability](images/fraud_probability.png)
+  ![Fraud Probability]
 
 - Top 10 Suspicious Transactions (tabular output shown inline in notebook)
