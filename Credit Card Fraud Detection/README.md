@@ -57,7 +57,6 @@ To classify transactions as **fraudulent (1)** or **genuine (0)** using a superv
 | File | Description |
 |------|-------------|
 | `fraud_detection_model.ipynb` | Main Jupyter notebook |
-| `top_suspicious.csv` | Top 10 suspicious transactions based on fraud probability |
 | `README.md` | Project documentation |
 
 ---
