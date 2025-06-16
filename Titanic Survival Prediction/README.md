@@ -1,147 +1,141 @@
-# Titanic Survival Prediction – End-to-End ML Pipeline
+# Titanic Survival Prediction – Machine Learning Project
 
-This project implements an end-to-end machine learning pipeline to predict Titanic passenger survival using structured input, proper data handling, robust preprocessing, and visual clarity. It includes custom transformations, pipeline integration, user interactivity, and data export for full transparency.
+This project is a full end-to-end machine learning pipeline that predicts whether a passenger would survive the Titanic disaster. It includes data preprocessing, feature engineering, model training, evaluation, visualization, and interactive prediction through user input. The goal is to build a **human-readable**, practical, and reproducible ML solution.
 
 ---
 
-## 📦 Project Workflow
+## Project Workflow
 
-1. **Data Loading**
-   - Load raw Titanic dataset using `pandas`.
-   - Preview and understand structure.
+1. **Load the Dataset**
+   - Load the Titanic CSV file and inspect data structure.
 
-2. **Data Cleaning & Preprocessing**
-   - Drop uninformative columns: `PassengerId`, `Name`, `Ticket`, `Cabin`
-   - Handle missing values using median (Age) and mode (Embarked).
-   - Feature engineering:
+2. **Clean the Data**
+   - Drop irrelevant features like `PassengerId`, `Name`, `Ticket`, and `Cabin`.
+   - Fill missing values:
+     - `Age`: replaced with median.
+     - `Embarked`: replaced with mode.
+
+3. **Feature Engineering**
+   - Add new features:
      - `FamilySize = SibSp + Parch + 1`
      - `IsAlone = 1 if FamilySize == 1 else 0`
-   - Categorical encoding with `OneHotEncoder`
-   - Scaling with `StandardScaler`
 
-3. **Data Splitting**
-   - Use `train_test_split` to divide into 80% training and 20% testing.
-   - Export `train_data.csv` and `test_data.csv` after combining `X` and `y`.
+4. **Encoding & Scaling**
+   - Encode categorical features using `OneHotEncoder`.
+   - Standardize numeric features using `StandardScaler`.
 
-4. **Model Pipeline Construction**
-   - Use `ColumnTransformer` to preprocess numerical and categorical features.
-   - Wrap `RandomForestClassifier` in a `Pipeline`.
-   - Fit on training data.
+5. **Train-Test Split**
+   - Split the cleaned dataset into training and testing sets.
+   - Save both datasets as `train_data.csv` and `test_data.csv`.
 
-5. **Model Evaluation**
-   - Predict on test set.
-   - Print:
-     - Accuracy score
-     - Confusion matrix
-     - Classification report
+6. **Build ML Pipeline**
+   - Combine preprocessing and `RandomForestClassifier` using `Pipeline`.
+   - Train the model on scaled, encoded data.
 
-6. **Feature Importance Extraction**
-   - Extract feature names from preprocessor.
-   - Clean names (remove prefixes like `num__`, `cat__`)
-   - Plot sorted barplot with multicolors and reduced figure size for compact visualization.
+7. **Evaluate Model**
+   - Print accuracy, confusion matrix, and classification report.
+   - Plot feature importance, heatmap, and boxplot for visual inspection.
 
-7. **Visualizations**
-   - Boxplot: Age vs Survival
-   - Heatmap: Correlation matrix
-   - Feature Importance Barplot
+8. **Make Prediction (User Input)**
+   - Take user input for passenger attributes.
+   - Predict survival using the trained model.
+   - Show the confidence and display a sample of training data for comparison.
 
-8. **Model & Scaler Export**
-   - Save both trained model and fitted scaler as `.pkl` files using `joblib`.
-
-9. **User Input & Prediction**
-   - Accept structured input with prompt messages indicating expected value ranges.
-   - Encode and scale input.
-   - Predict survival with probability.
-   - Print prediction in clean language.
-   - Show a few entries from the training set for comparison.
+9. **Export Model**
+   - Save trained model and scaler as `.pkl` files using `joblib`.
 
 ---
 
-## 🗂 Dataset Used
+## Dataset Details
 
-- **Source**: Titanic Dataset from Kaggle
-- **Features**:
-  - Pclass (1st, 2nd, 3rd class)
-  - Sex (male/female)
-  - Age
-  - SibSp (siblings/spouses aboard)
-  - Parch (parents/children aboard)
-  - Fare (fare paid)
-  - Embarked (port of embarkation: C, Q, S)
-- **Engineered**:
-  - FamilySize
-  - IsAlone
-
----
-
-## 🧠 Model Details
-
-| Component         | Method / Tool Used                      |
-|-------------------|-----------------------------------------|
-| Model             | RandomForestClassifier (n_estimators=100) |
-| Pipeline          | Preprocessor + Classifier               |
-| Categorical       | OneHotEncoder                           |
-| Numerical         | StandardScaler                          |
-| Imputation        | SimpleImputer (median for age, mode for embarked) |
-| Evaluation        | Accuracy, Confusion Matrix, Classification Report |
+**Source**: Kaggle Titanic Dataset  
+**Features Used**:
+- `Pclass` – Ticket class
+- `Sex` – Male or Female
+- `Age`
+- `SibSp` – # of siblings/spouses aboard
+- `Parch` – # of parents/children aboard
+- `Fare` – Ticket fare
+- `Embarked` – C = Cherbourg, Q = Queenstown, S = Southampton  
+**Engineered**:
+- `FamilySize` – Total family members aboard
+- `IsAlone` – Binary indicator for solo travelers
 
 ---
 
-## 🧪 Metrics
+## Visualizations
 
-| Metric               | Value (approx.) |
-|----------------------|-----------------|
-| Accuracy             | 0.79 – 0.81     |
-| Precision, Recall    | Detailed in report output |
-| Confusion Matrix     | 2x2 matrix displayed clearly |
-| Classification Report| Shown in full |
+The project generates clear and minimal visualizations:
 
----
+1. **Feature Importance Plot**  
+   - Horizontal bars with color variety  
+   - Features sorted by importance
 
-## 📤 Output Details
+2. **Age vs Survival Boxplot**  
+   - Compares survival trends across age distributions
 
-### 1. **Model Evaluation Metrics**
-- **Accuracy Score**: Printed to console (typically ~80%)
-- **Confusion Matrix**: Tabular layout showing correct vs. incorrect predictions
-- **Classification Report**: Precision, recall, F1-score for both survival classes
-
-### 2. **Visualizations**
-- **Correlation Heatmap**: Shows relationships among features using color intensity
-- **Boxplot of Age vs Survival**: Highlights age distribution in survivors vs non-survivors
-- **Feature Importance Barplot**: 
-  - Horizontal multicolor bars sorted by importance
-  - Clean, readable feature names
-  - Reduced figure size to avoid excessive scrolling
-
-### 3. **File Exports**
-- `train_data.csv`: Training portion of the preprocessed data
-- `test_data.csv`: Test portion used for evaluation
-- `titanic_model.pkl`: Final trained Random Forest model with preprocessing pipeline
-- `titanic_scaler.pkl`: Scaler object for future standardization (if needed separately)
+3. **Correlation Heatmap**  
+   - Color intensity shows positive or negative correlation between features
 
 ---
 
-## 🧾 Input Prompt Details
+## Model Evaluation
 
-After model training, the user is asked for input with clearly stated formats:
+- **Accuracy**: ~80%  
+- **Confusion Matrix**: Displays correct vs incorrect predictions  
+- **Classification Report**: Shows precision, recall, F1-score for each class  
 
-```text
-Ticket Class (1 = 1st, 2 = 2nd, 3 = 3rd):
-Sex (Male/Female):
-Age:
-No. of Siblings/Spouses aboard:
-No. of Parents/Children aboard:
-Fare Paid:
-Port of Embarkation (C = Cherbourg, Q = Queenstown, S = Southampton):
+These metrics give insight into the model’s performance on unseen test data.
 
-- Returns:
-- Whether the passenger would likely have survived
-- Confidence percentage of prediction
+---
+
+## User Input Prediction
+
+**After training, the program prompts the user with:**
+- Ticket Class (1 = 1st, 2 = 2nd, 3 = 3rd):
+- Sex (Male/Female):
+- Age:
+- Number of Siblings/Spouses aboard:
+- Number of Parents/Children aboard:
+- Fare Paid:
+- Port of Embarkation (C/Q/S):
+
+---
+
+### Output:
+- Whether the passenger would have survived or not
+- Prediction confidence as a percentage
+- First five preprocessed training rows for comparison
+
+---
+
+## Files Generated
+
+- `train_data.csv` – Preprocessed training set  
+- `test_data.csv` – Preprocessed test set  
+- `titanic_model.pkl` – Trained classification model  
+- `titanic_scaler.pkl` – Preprocessing scaler
+
+---
+
+## Technologies Used
+
+| Task              | Tool / Library        |
+|-------------------|------------------------|
+| Data Handling     | pandas, numpy          |
+| Visualization     | seaborn, matplotlib    |
+| ML Model          | RandomForestClassifier |
+| Preprocessing     | sklearn Pipeline, ColumnTransformer |
+| Model Export      | joblib                 |
 
 ---
 
 ## Acknowledgement
 
-This project is one of the three required tasks for the Data Science Internship at CodSoft.  
-I have actively used the Data Science course by  and various YouTube tutorials to guide my learning and implementation throughout this project.
+This project was developed with a strong emphasis on interpretability, user interaction, and real-world machine learning workflow. 
 
+I sincerely acknowledge the guidance and conceptual clarity provided by educational creators such as:
+- **Krish Naik** – for practical end-to-end project building strategies.
+- **freeCodeCamp.org** – for comprehensive, beginner-friendly ML content.
+
+Additionally, various blog posts, Stack Overflow discussions, and open web documentation contributed greatly to decisions made during preprocessing, modeling, and visualization.
