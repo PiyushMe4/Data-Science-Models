@@ -65,5 +65,6 @@ This project aims to detect fraudulent credit card transactions using a supervis
 
 ## Acknowledgement
 
-This project is one of the three required tasks for the Data Science Internship at CodSoft.  
+**This project was developed with a strong emphasis on interpretability, user interaction, and real-world machine learning workflow and is one of the three required tasks for the Data Science Internship at CodSoft.**  
+
 I have actively used the Data Science course by Krish Naik and various YouTube tutorials to guide my learning and implementation throughout this project.
