@@ -1,14 +1,8 @@
-# Credit Card Fraud Detection Using Machine Learning
+# Credit Card Fraud Detection Project
 
-This project builds a machine learning model to detect fraudulent credit card transactions from a real-world dataset. The model is trained to work with extremely imbalanced data and highlights important features, model evaluation, and suspicious transaction outputs.
+## Overview
 
----
-
-## Project Objective
-
-To classify transactions as **fraudulent (1)** or **genuine (0)** using a supervised machine learning model trained on anonymized PCA-transformed data.
-
----
+This project aims to detect fraudulent credit card transactions using a supervised machine learning approach. The dataset is highly imbalanced, with only 0.17% of the transactions labeled as fraud. SMOTE (Synthetic Minority Oversampling Technique) was used to address this imbalance.
 
 ## Dataset Overview
 
@@ -21,57 +15,55 @@ To classify transactions as **fraudulent (1)** or **genuine (0)** using a superv
   - `V1` to `V28` – PCA components
   - `Class` – Target (1 = Fraud, 0 = Genuine)
 
----
+ ## Tools and Technologies Used
 
-## Project Structure
+- Python
+- Jupyter Notebook
+- Pandas, NumPy
+- Seaborn, Matplotlib
+- scikit-learn (Random Forest, Logistic Regression, SMOTE, train_test_split)
+- imbalanced-learn
+- joblib
 
-1. **Data Preprocessing**
-   - Load dataset
-   - Drop duplicates
-   - Scale `Time` and `Amount` with `StandardScaler`
+## Workflow
 
-2. **Handle Class Imbalance**
-   - Use `SMOTE` to oversample fraud cases
-   - Split into train/test sets (80:20)
+1. **Data Loading and Preprocessing**  
+   - The dataset is read and cleaned (`Time` column dropped, `Amount` scaled)
+   - Feature and label separation is done
 
-3. **Model Training**
-   - Random Forest Classifier with `class_weight='balanced'`
+2. **Handling Imbalance using SMOTE**  
+   - SMOTE is applied to generate synthetic fraud samples and balance the dataset
 
-4. **Model Evaluation**
-   - Metrics: Precision, Recall, F1-Score, AUPRC
-   - Confusion matrix
+3. **Model Training**  
+   - Random Forest Classifier is trained on the balanced data
+   - The model is used to make predictions and generate fraud probabilities
 
-5. **Results and Export**
-   - Save cleaned training and test predictions
-   - Export top 10 suspicious transactions
+4. **Evaluation and Visualization**  
+   - Confusion matrix and classification report for performance analysis
+   - Precision-Recall curve is plotted for visual performance
+   - Bar plot of top 10 most important features used by the model
 
-6. **Visualizations**
-   - Class distribution before/after SMOTE
-   - Feature importances
-   - Fraud probability distribution
+5. **Saving Output**  
+   - The cleaned and resampled training and test datasets are saved as CSV files
+   - A final labeled dataset with predictions and probabilities is saved
+   - The trained model is saved using `joblib`
 
----
+## Output
 
-## Output Files
+- A trained Random Forest model capable of classifying fraudulent vs genuine transactions
+- CSV files:
+  - `training_dataset.csv`
+  - `test_dataset.csv`
+  - `fraud_cases_only.csv`
+  - `all_predictions_with_probabilities.csv`
+  - `final_model_predictions.csv`
+- Visualizations including:
+  - Class distribution before/after SMOTE
+  - Precision-Recall Curve
+  - Top 10 feature importances
+  - Confusion matrix with annotated labels
 
-| File | Description |
-|------|-------------|
-| `fraud_detection_model.ipynb` | Main Jupyter notebook |
-| `README.md` | Project documentation |
+## Acknowledgement
 
----
-
-## Sample Visualizations
-
-> Below visuals are generated automatically in the notebook:
-
-- Class Distribution Before and After SMOTE  
-  ![Class Distribution]
-
-- Top 10 Important Features  
-  ![Feature Importance]
-
-- Fraud Probability Histogram  
-  ![Fraud Probability]
-
-- Top 10 Suspicious Transactions (tabular output shown inline in notebook)
+This project is one of the three required tasks for the Data Science Internship at CodSoft.  
+I have actively used the Data Science course by Krish Naik and various YouTube tutorials to guide my learning and implementation throughout this project.
