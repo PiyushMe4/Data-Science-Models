@@ -132,7 +132,7 @@ These metrics give insight into the model’s performance on unseen test data.
 
 ## Acknowledgement
 
-This project was developed with a strong emphasis on interpretability, user interaction, and real-world machine learning workflow. 
+**This project was developed with a strong emphasis on interpretability, user interaction, and real-world machine learning workflow and is one of the three required tasks for the Data Science Internship at CodSoft.**
 
 I sincerely acknowledge the guidance and conceptual clarity provided by educational creators such as:
 - **Krish Naik** – for practical end-to-end project building strategies.
