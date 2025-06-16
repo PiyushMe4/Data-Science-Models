@@ -1,62 +1,52 @@
-# Iris Flower Classification - Machine Learning Project
+# Iris Flower Classification Project
 
-This project implements a machine learning model to classify Iris flowers into one of three species — Setosa, Versicolor, or Virginica — based on sepal and petal measurements. The classification is performed using the K-Nearest Neighbors (KNN) algorithm, and includes exploratory data analysis with visualizations.
+## Overview
 
----
+This project builds a machine learning model to classify Iris flowers into three species: Setosa, Versicolor, and Virginica. The dataset contains 150 samples with four features — sepal length, sepal width, petal length, and petal width. The objective is to train a model that accurately classifies a given flower species based on these measurements.
 
 ## Dataset
 
-**Source:**[ Iris Flower Dataset ](https://www.kaggle.com/datasets/arshid/iris-flower-dataset)
+**Source:** [ Iris Flower Dataset ](https://www.kaggle.com/datasets/arshid/iris-flower-dataset)
 
-**Features Used:**
-- SepalLengthCm
-- SepalWidthCm
-- PetalLengthCm
-- PetalWidthCm
-- Species (Target)
+## Tools and Technologies Used
 
+- Python
+- Jupyter Notebook
+- Pandas, NumPy
+- Seaborn, Matplotlib
+- scikit-learn (KNN Classifier, StandardScaler, train_test_split, evaluation metrics)
+
+## Workflow
+
+1. **Data Loading**  
+   The Iris dataset is loaded using Pandas and cleaned by trimming column names and target labels.
+
+2. **Data Visualization**  
+   Various plots are created to understand feature distribution and inter-feature relationships:
+   - Violin plot for petal length
+   - Pair plot for feature comparison
+   - Correlation heatmap
+   - Sepal width scatter strip plot
+
+3. **Preprocessing**  
+   - The feature matrix `X` is scaled using `StandardScaler`
+   - Data is split into training and testing sets
+
+4. **Model Building**  
+   - A K-Nearest Neighbors (KNN) classifier is trained on the training data
+   - Predictions are made on the test data
+
+5. **Evaluation**  
+   - Accuracy, confusion matrix, and classification report are printed to evaluate performance
+
+## Output
+
+- Accuracy score of the model on unseen data
+- Confusion matrix for class-wise error analysis
+- Classification report (Precision, Recall, F1-score)
+
+## Acknowledgement
+
+- This project is one of the three required tasks for the Data Science Internship at CodSoft.  
+- I have actively used the Data Science course by Krish Naik and various YouTube tutorials to guide my learning and implementation throughout this project.
 ---
-
-## Visualizations
-
-Four visualizations were created to understand patterns and separability among classes:
-- VIZ-A: Violin plot of Petal Length across Species
-- VIZ-B: Pairplot of all numerical features colored by Species
-- VIZ-C: Correlation heatmap of all features
-- VIZ-D: Stripplot showing Sepal Width distribution per Species
-
----
-
-## Model Details
-
-- Algorithm: K-Nearest Neighbors (K=5)
-- Preprocessing: Feature scaling using StandardScaler
-- Split: 80% training and 20% testing
-- Metrics: Accuracy, Confusion Matrix, Precision, Recall, F1-score
-
----
-
-## Results
-
-- Accuracy: Approximately 97% on test data
-- All classes were correctly classified with minimal overlap
-- Clear separation observed in the feature space between species
-
----
-
-## Tools Used
-
-- Python (Jupyter Notebook)
-- Pandas
-- Seaborn
-- Matplotlib
-- Scikit-learn
-
----
-
-## Project Objective
-
-This project is a part of my Internship in Data Science at CodSoft to practice in classification-based machine learning problems. It was built to strengthen understanding of feature relationships, exploratory data analysis, and supervised learning workflows.
-
----
-
